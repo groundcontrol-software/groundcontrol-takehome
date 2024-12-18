@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
 
+let requestCount = 0;
+
 export async function GET() {
+
+  
+  // TODO: Remove me before pushing to git!
+  // Added to make sure we're properly handling surprise teapots
+  requestCount++;
+  if (requestCount % 4 === 0) {
+    return NextResponse.json([{ "message": "Success!" }], { status: 418 });
+  }
+
   const users = [
     {
       id: 1,
